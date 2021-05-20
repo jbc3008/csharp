@@ -15,18 +15,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 Extras", "99 Extras", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.WebApplication1", "Formacion.CSharp.WebApplication1\Formacion.CSharp.WebApplication1.csproj", "{2BF663ED-9432-44F1-A139-4164F79A23EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppDemos", "Formacion.CSharp.ConsoleAppDemos\Formacion.CSharp.ConsoleAppDemos.csproj", "{015F9CBC-6C43-483F-A324-A9D3148DDBA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.ConsoleAppDemos", "Formacion.CSharp.ConsoleAppDemos\Formacion.CSharp.ConsoleAppDemos.csproj", "{015F9CBC-6C43-483F-A324-A9D3148DDBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppLINQ", "Formacion.CSharp.ConsoleAppLINQ\Formacion.CSharp.ConsoleAppLINQ.csproj", "{8DC6870A-499A-4387-BED1-C91A8A3D3CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.ConsoleAppLINQ", "Formacion.CSharp.ConsoleAppLINQ\Formacion.CSharp.ConsoleAppLINQ.csproj", "{8DC6870A-499A-4387-BED1-C91A8A3D3CAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Organizing Data into Collections", "03 Organizing Data into Collections", "{9C414537-BA45-4D98-9563-9A5B8C1C46B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleApp3", "Formacion.CSharp.ConsoleApp3\Formacion.CSharp.ConsoleApp3.csproj", "{37990639-8F77-420B-866E-7AD14339EB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.ConsoleApp3", "Formacion.CSharp.ConsoleApp3\Formacion.CSharp.ConsoleApp3.csproj", "{37990639-8F77-420B-866E-7AD14339EB14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AA Ejercicios de CSharp", "AA Ejercicios de CSharp", "{6ED7BD09-C617-41C9-88AA-DA2B2A27C7EA}"
 	ProjectSection(SolutionItems) = preProject
 		Ejercicios-LINQ.md = Ejercicios-LINQ.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppDATA", "Formacion.CSharp.ConsoleAppDATA\Formacion.CSharp.ConsoleAppDATA.csproj", "{A4CB1322-C846-4887-81B7-3D906F77BC8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Librerías", "00 Librerías", "{492E2821-28DB-4700-8F34-2FFC41419883}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.Data", "Formacion.CSharp.Data\Formacion.CSharp.Data.csproj", "{F275041C-0AEA-499E-AA10-73EE1D041F5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +64,14 @@ Global
 		{37990639-8F77-420B-866E-7AD14339EB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37990639-8F77-420B-866E-7AD14339EB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37990639-8F77-420B-866E-7AD14339EB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4CB1322-C846-4887-81B7-3D906F77BC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4CB1322-C846-4887-81B7-3D906F77BC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4CB1322-C846-4887-81B7-3D906F77BC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4CB1322-C846-4887-81B7-3D906F77BC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +83,8 @@ Global
 		{015F9CBC-6C43-483F-A324-A9D3148DDBA6} = {F46EA33E-E8AA-4F4F-9269-FD7D7F77B600}
 		{8DC6870A-499A-4387-BED1-C91A8A3D3CAA} = {9C414537-BA45-4D98-9563-9A5B8C1C46B5}
 		{37990639-8F77-420B-866E-7AD14339EB14} = {9C414537-BA45-4D98-9563-9A5B8C1C46B5}
+		{A4CB1322-C846-4887-81B7-3D906F77BC8D} = {9C414537-BA45-4D98-9563-9A5B8C1C46B5}
+		{F275041C-0AEA-499E-AA10-73EE1D041F5E} = {492E2821-28DB-4700-8F34-2FFC41419883}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2383F36F-4F2B-4337-A627-88EF05BB2412}

@@ -240,11 +240,23 @@ namespace Formacion.CSharp.ConsoleAppLINQ
             Console.WriteLine(Environment.NewLine);
 
 
-            //Datos de los clientes con sus pedidos
+            //Pedidos agrupos por la idCliente. Retorna una colección IGrouping
+            //La colección IGrouping tiene una Key (por la que agrupa) y un listado de registros asociados a la clave 
             //Con Agrupación
             var data1 = DataLists.ListaPedidos
-                .GroupBy(r => r.IdCliente)
+                .GroupBy(r => r.IdCliente)      // <-- Especificamos la Key por la cual se agrupan los registos de ListadoPedidos
                 .ToList();
+
+            foreach (var c in data1)
+            {
+                Console.WriteLine($"Clave (IdCliente): {c.Key} - Total Pedidos: {c.Count()}");
+                foreach (var l in c)
+                {
+                    Console.WriteLine($" -> {l.Id} - {l.FechaPedido.ToShortDateString()}");
+                }
+                Console.WriteLine("");
+            }
+
 
             //Con Agrupación, obteniendo los datos del cliente
             var data2 = DataLists.ListaPedidos
@@ -252,14 +264,77 @@ namespace Formacion.CSharp.ConsoleAppLINQ
                 .Select(r => new {
                     r.Key,
                     totalPedidos = r.Count(),
-                    pedidos = r,
-                    cliente = DataLists.ListaClientes.Where(s => s.Id == r.Key).FirstOrDefault()
+                    //pedidos = r,
+                    //cliente = DataLists.ListaClientes.Where(s => s.Id == r.Key).FirstOrDefault(),
+                    nombreCliente = DataLists.ListaClientes.Where(s => s.Id == r.Key).Select(s => s.Nombre).FirstOrDefault()
                 }).ToList();
 
             foreach (var c in data2)
             {
-                Console.WriteLine($"{c.cliente.Nombre} - {c.totalPedidos} pedidos.");
+                Console.WriteLine($"{c.nombreCliente} - {c.totalPedidos} pedidos.");
             }
+            Console.WriteLine("");
+
+
+            //Pedidos con el importe total de cada pedido
+            // 1. Agrupar lineas de pedido por idPedido            
+            var data3 = DataLists.ListaLineasPedido
+                .GroupBy(r => r.IdPedido)      // <-- Especificamos la Key por la cual se agrupan los registos de ListadoPedidos
+                .ToList();
+
+            foreach (var c in data3)
+            {
+                Console.WriteLine($"Clave (IdPedido): {c.Key} - Lineas del Pedido: {c.Count()} Unidades: {c.Sum(r => r.Cantidad)}");
+                foreach (var l in c)
+                {
+                    Console.WriteLine($" -> ID Producto: {l.IdProducto} - Cantidad: {l.Cantidad}");
+                }
+                Console.WriteLine("");
+            }
+
+            // 2. Mostrar descripción y precio del producto
+            var data3b = DataLists.ListaLineasPedido
+                .GroupBy(r => r.IdPedido)      // <-- Especificamos la Key por la cual se agrupan los registos de ListadoPedidos
+                .Select(r => new {
+                    r.Key,
+                    numLineas = r.Count(),
+                    unidades = r.Sum(s => s.Cantidad),
+                    lineas = r,
+                    pedido = DataLists.ListaPedidos.Where(s => s.Id == r.Key).FirstOrDefault(),
+                    lineasExt = r.Select( x => new {
+                        linea = x,
+                        producto = DataLists.ListaProductos.Where(s => s.Id == x.IdProducto).FirstOrDefault()
+                    }) 
+                })
+                .ToList();
+
+            foreach (var c in data3b)
+            {
+                Console.WriteLine($"Clave (IdPedido): {c.Key} - Lineas del Pedido: {c.lineas.Count()} Unidades: {c.lineas.Sum(r => r.Cantidad)}");
+                foreach (var l in c.lineasExt)
+                {
+                    Console.WriteLine($" -> {l.producto.Id}# {l.producto.Descripcion} - Precio: {l.producto.Precio} - Cantidad: {l.linea.Cantidad}");
+                }
+                Console.WriteLine("");
+            }
+
+            // 3. Mostrar IdPedido y Precio total
+            var data3c = DataLists.ListaLineasPedido
+                .GroupBy(r => r.IdPedido)      // <-- Especificamos la Key por la cual se agrupan los registos de ListadoPedidos
+                .Select(r => new {
+                    r.Key,
+                    totalPedido = r.Sum( x => 
+                        x.Cantidad * DataLists.ListaProductos.Where(s => s.Id == x.IdProducto)
+                            .Select(p => p.Precio)
+                            .FirstOrDefault())
+                })
+                .ToList();
+
+            foreach (var c in data3c)
+            {
+                Console.WriteLine($"Clave (IdPedido): {c.Key} - Total: {c.totalPedido}");
+            }
+
         }
     }
 
