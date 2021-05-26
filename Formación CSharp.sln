@@ -28,11 +28,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AA Ejercicios de CSharp", "
 		Ejercicios-LINQ.md = Ejercicios-LINQ.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppDATA", "Formacion.CSharp.ConsoleAppDATA\Formacion.CSharp.ConsoleAppDATA.csproj", "{A4CB1322-C846-4887-81B7-3D906F77BC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.ConsoleAppDATA", "Formacion.CSharp.ConsoleAppDATA\Formacion.CSharp.ConsoleAppDATA.csproj", "{A4CB1322-C846-4887-81B7-3D906F77BC8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Librerías", "00 Librerías", "{492E2821-28DB-4700-8F34-2FFC41419883}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.Data", "Formacion.CSharp.Data\Formacion.CSharp.Data.csproj", "{F275041C-0AEA-499E-AA10-73EE1D041F5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.Data", "Formacion.CSharp.Data\Formacion.CSharp.Data.csproj", "{F275041C-0AEA-499E-AA10-73EE1D041F5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 API Rest", "04 API Rest", "{A41D2B2F-37CE-4F32-BE08-5CC0812640D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppAPIClient", "Formacion.CSharp.ConsoleAppAPIClient\Formacion.CSharp.ConsoleAppAPIClient.csproj", "{B3447E89-C71E-4F2F-8310-98BB3139E4AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.MicroServicioNorthwind", "Formacion.CSharp.MicroServicioNorthwind\Formacion.CSharp.MicroServicioNorthwind.csproj", "{EC14713A-ED53-495D-9824-6563816316C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +78,14 @@ Global
 		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F275041C-0AEA-499E-AA10-73EE1D041F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3447E89-C71E-4F2F-8310-98BB3139E4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3447E89-C71E-4F2F-8310-98BB3139E4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3447E89-C71E-4F2F-8310-98BB3139E4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3447E89-C71E-4F2F-8310-98BB3139E4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC14713A-ED53-495D-9824-6563816316C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC14713A-ED53-495D-9824-6563816316C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC14713A-ED53-495D-9824-6563816316C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC14713A-ED53-495D-9824-6563816316C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +99,8 @@ Global
 		{37990639-8F77-420B-866E-7AD14339EB14} = {9C414537-BA45-4D98-9563-9A5B8C1C46B5}
 		{A4CB1322-C846-4887-81B7-3D906F77BC8D} = {9C414537-BA45-4D98-9563-9A5B8C1C46B5}
 		{F275041C-0AEA-499E-AA10-73EE1D041F5E} = {492E2821-28DB-4700-8F34-2FFC41419883}
+		{B3447E89-C71E-4F2F-8310-98BB3139E4AF} = {A41D2B2F-37CE-4F32-BE08-5CC0812640D5}
+		{EC14713A-ED53-495D-9824-6563816316C0} = {A41D2B2F-37CE-4F32-BE08-5CC0812640D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2383F36F-4F2B-4337-A627-88EF05BB2412}
