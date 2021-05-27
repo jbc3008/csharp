@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace Formacion.CSharp.WebApplication1.Controllers
@@ -14,6 +16,11 @@ namespace Formacion.CSharp.WebApplication1.Controllers
         //Mostrar listado de clientes
         public IActionResult Index()
         {
+            //var http = new HttpClient();
+            //http.BaseAddress = new Uri("https://localhost:44366/api/");
+
+            //var clientes = http.GetFromJsonAsync<List<Customers>>("customers").Result;
+
             var clientes = context.Customers.ToList();
             ViewBag.Title = "Listado de Clientes";
 

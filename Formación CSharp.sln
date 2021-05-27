@@ -36,9 +36,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.Data", "Fo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 API Rest", "04 API Rest", "{A41D2B2F-37CE-4F32-BE08-5CC0812640D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.ConsoleAppAPIClient", "Formacion.CSharp.ConsoleAppAPIClient\Formacion.CSharp.ConsoleAppAPIClient.csproj", "{B3447E89-C71E-4F2F-8310-98BB3139E4AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formacion.CSharp.ConsoleAppAPIClient", "Formacion.CSharp.ConsoleAppAPIClient\Formacion.CSharp.ConsoleAppAPIClient.csproj", "{B3447E89-C71E-4F2F-8310-98BB3139E4AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.MicroServicioNorthwind", "Formacion.CSharp.MicroServicioNorthwind\Formacion.CSharp.MicroServicioNorthwind.csproj", "{EC14713A-ED53-495D-9824-6563816316C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formacion.CSharp.APINorthwind", "Formacion.CSharp.APINorthwind\Formacion.CSharp.APINorthwind.csproj", "{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +88,10 @@ Global
 		{EC14713A-ED53-495D-9824-6563816316C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC14713A-ED53-495D-9824-6563816316C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC14713A-ED53-495D-9824-6563816316C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{F275041C-0AEA-499E-AA10-73EE1D041F5E} = {492E2821-28DB-4700-8F34-2FFC41419883}
 		{B3447E89-C71E-4F2F-8310-98BB3139E4AF} = {A41D2B2F-37CE-4F32-BE08-5CC0812640D5}
 		{EC14713A-ED53-495D-9824-6563816316C0} = {A41D2B2F-37CE-4F32-BE08-5CC0812640D5}
+		{643956C8-5E85-4DE0-AAFD-96C4F8A8FAAF} = {A41D2B2F-37CE-4F32-BE08-5CC0812640D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2383F36F-4F2B-4337-A627-88EF05BB2412}

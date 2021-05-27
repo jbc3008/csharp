@@ -16,7 +16,7 @@ namespace Formacion.CSharp.ConsoleAppAPIClient
 
         static void Main(string[] args)
         {
-            Ejercicio2();
+            Ejercicio3DELETE();
         }
 
         static void HttpClientWithDynamic()
@@ -47,7 +47,7 @@ namespace Formacion.CSharp.ConsoleAppAPIClient
             var response = http.GetAsync("clientes.ashx?all").Result;
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
+            {                
                 var content = response.Content.ReadAsStringAsync().Result;
                 Console.WriteLine("Respuesta JSON: {0}", content);
 
@@ -186,12 +186,144 @@ namespace Formacion.CSharp.ConsoleAppAPIClient
         static void Ejercicio2()
         {
             http.BaseAddress = new Uri("https://localhost:44334/api/v1.0/");
-            //empleados.ashx?id=3
 
             Console.Clear();
             Console.Write("ID Empleado: ");
             var id = Console.ReadLine();
 
+            var response = http.GetAsync($"empleados.ashx?id={id}").Result;
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var contentType = response.Content.Headers.ContentType.MediaType;
+                var content = response.Content.ReadAsStringAsync().Result;
+
+                if (contentType == "text/plain")
+                {
+                    Console.WriteLine(content);
+                }
+                else if (contentType == "application/json")
+                {
+                    var empleado = JsonConvert.DeserializeObject<Employees>(content);
+                    Console.WriteLine($"{empleado.FirstName} {empleado.LastName}");
+                    Console.WriteLine($"{empleado.Title}");
+                    Console.WriteLine($"{empleado.City} {empleado.Country}");
+                }
+            }
+            else Console.WriteLine("Error: {0}", response.StatusCode.ToString());
+        }
+
+        static void Ejercicio3GET()
+        {
+            HttpResponseMessage response;
+            http.BaseAddress = new Uri("https://localhost:44366/api/");
+
+            //Mostar productos por id o listado introduciendo all
+            Console.Clear();
+            Console.Write("ID Producto: ");
+            var id = Console.ReadLine();
+
+            switch (id.ToLower())
+            {
+                case "all":
+                    response = http.GetAsync("products").Result;
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var productos = JsonConvert.DeserializeObject<List<Products>>(response.Content.ReadAsStringAsync().Result);
+
+                        Console.Clear();
+                        foreach (var p in productos) Console.WriteLine($"{p.ProductID}# {p.ProductName} {p.UnitPrice}");
+                    }
+                    else Console.WriteLine($"Error: {response.StatusCode.ToString()}");                                      
+                    break;
+                default:
+                    response = http.GetAsync($"products/{id}").Result;
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var producto = JsonConvert.DeserializeObject<Products>(response.Content.ReadAsStringAsync().Result);
+
+                        Console.Clear();
+                        Console.WriteLine($"{producto.ProductID}# {producto.ProductName} {producto.UnitPrice}");
+                    }
+                    else Console.WriteLine($"Error: {response.StatusCode.ToString()}");
+                    break;
+            }
+
+        }
+
+        static void Ejercicio3POST()
+        {
+            Products producto = new Products();
+            HttpResponseMessage response;
+            http.BaseAddress = new Uri("https://localhost:44366/api/");
+
+            //Insertar un nuevo Producto
+            Console.Clear();
+            Console.Write("Nombre: ");
+            producto.ProductName = Console.ReadLine();
+            Console.Write("Precio: ");
+            producto.UnitPrice = Convert.ToDecimal(Console.ReadLine());
+            Console.Write("Stock: ");
+            producto.UnitsInStock = Convert.ToInt16(Console.ReadLine());
+            producto.SupplierID = 1;
+            producto.CategoryID = 1;
+            producto.QuantityPerUnit = "1";
+            producto.UnitsOnOrder = 0;
+            producto.Discontinued = false;
+            producto.ReorderLevel = 0;
+
+            var content = new StringContent(JsonConvert.SerializeObject(producto), System.Text.Encoding.UTF8, "application/json");
+
+            response = http.PostAsync("products", content).Result;
+            if (response.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                var data = JsonConvert.DeserializeObject<Products>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Producto creado correctamente con identificador {data.ProductID}.");
+            }
+            else Console.WriteLine("Error: {0}", response.StatusCode.ToString());
+        }
+
+        static void Ejercicio3PUT()
+        {
+            HttpResponseMessage response;
+            http.BaseAddress = new Uri("https://localhost:44366/api/");
+
+            //Modificar un nuevo Producto
+            var producto = http.GetFromJsonAsync<Products>("products/79").Result;
+            producto.ProductName = "Nata para cocinar ligera";
+            producto.UnitPrice = 2.95M;
+
+            var content = new StringContent(JsonConvert.SerializeObject(producto), System.Text.Encoding.UTF8, "application/json");
+
+            response = http.PutAsync("products/79", content).Result;
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            {                
+                Console.WriteLine($"Producto modificado correctamente.");
+            }
+            else Console.WriteLine("Error: {0}", response.StatusCode.ToString());
+        }
+
+        static void Ejercicio3DELETE()
+        {
+            HttpResponseMessage response;
+            http.BaseAddress = new Uri("https://localhost:44366/api/");
+            
+            Console.Clear();
+            Console.Write("ID Producto: ");
+            var id = Console.ReadLine();
+
+            var producto = http.GetFromJsonAsync<Products>($"products/{id}").Result;
+            
+            Console.WriteLine($"¿Desea eliminar el producto {producto.ProductName}? Si/No");
+            if (Console.ReadLine().ToLower() == "si")
+            {
+                response = http.DeleteAsync($"products/{id}").Result;
+                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Console.WriteLine($"Producto eliminado correctamente.");
+                }
+                else Console.WriteLine("Error: {0}", response.StatusCode.ToString());
+            }
         }
     }
 }
